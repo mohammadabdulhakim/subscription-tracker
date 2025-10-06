@@ -1,6 +1,6 @@
 const errorMiddleware = (err, req,res,nxt) =>{
     try{
-        let error = {...err};
+        let error = err;
 
         console.error(err);
 
@@ -30,3 +30,5 @@ const errorMiddleware = (err, req,res,nxt) =>{
         nxt(error);
     }
 }
+
+export default errorMiddleware
