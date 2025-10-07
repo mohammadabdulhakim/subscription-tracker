@@ -27,12 +27,12 @@ const subscriptionSchema = new mongoose.Schema({
     category:{
         type:String,
         enum: ['sports', 'news', 'technology', 'finance', 'study'],
-        required,
+        required: true,
     },
     paymentMethod:{
         type: String,
-        required,
-        trim,
+        required: true,
+        trim: true,
         maxLength: 1024,
     },
     status: {
@@ -42,11 +42,10 @@ const subscriptionSchema = new mongoose.Schema({
     },
     startDate: {
         type: Date,
-        required,
         validate:{
             validator: (value) => value <= new Date(),
             message: "Start Date Can not be a date in the future.",
-        }
+        },
     },
     renewalDate: {
         type: Date,
@@ -58,7 +57,7 @@ const subscriptionSchema = new mongoose.Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        required,
+        required: true,
         index: true,
     }
 }, {timestamps: true});
